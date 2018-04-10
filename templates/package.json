@@ -1,5 +1,5 @@
 {
-        "name": "vtsx-sample",
+        "name": "vtsx",
         "version": "1.0.0",
         "description": "",
         "keywords": [],
@@ -25,8 +25,8 @@
                 "init-browsers": "^1.2.0"
         },
         "devDependencies": {
-                "clear-cli": "",
-                "closs-env": "",
+                "clear-cli": "^1.0.1",
+                "cross-env": "^5.1.4",
                 "autoprefixer": "^8.1.0",
                 "autoprefixer-loader": "^3.2.0",
                 "awesome-typescript-loader": "^4.0.1",
