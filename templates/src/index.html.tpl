@@ -11,7 +11,7 @@
 </head>
 
 <body>
-        <div id="appID">
+        <div id="vtsxID">
                 <router-view></router-view>
         </div>
 </body>

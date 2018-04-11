@@ -8,5 +8,63 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-(() => {
-})()
+const version: string = '1.0.0'
+const tplPath: string = path.join(__dirname, 'templates')
+
+if (process.argv.length <= 2) {
+        let shell = path.basename(process.argv[1])
+        console.log(`${shell} build a vue-app that support the typescript and jsx grammar`)
+        console.log(`Version: ${version}`)
+        console.log(`Syntsx: ${shell} name`)
+        process.exit(0)
+}
+
+if (/^[a-zA-Z][a-zA-Z0-9]{0,}$/.test(process.argv[2]) === false) {
+        console.log('Name must be alphabetic and numeric and the first character is the letter')
+        process.exit(0)
+}
+
+const nameLowercase: string = process.argv[2]
+const nameUppercase: string = nameLowercase.replace(/^[a-zA-Z]/, (str: string) => str.toUpperCase())
+const distPath: string = path.resolve('.')
+
+const toLowercase = (str: string): string => str.replace(/vtsx/g, nameLowercase)
+const toUppercase = (str: string): string => str.replace(/vtsx/g, nameUppercase)
+
+for (let element of ['src', 'src/assets', 'src/components', 'src/config', 'src/styles', 'src/typings', 'src/views']) {
+        let bufPath = path.join(distPath, element)
+
+        if (fs.existsSync(bufPath) === false) {
+                fs.mkdirSync(bufPath, 0o755)
+        }
+}
+
+Array(...[
+        '.babelrc',
+        'postcss.config.js',
+        'tsconfig.json',
+        'tslint.json',
+        'webpack.config.js',
+        'src/index.html',
+        'src/components/index.tsx',
+        'src/config/index.tsx',
+        'src/config/settings.tsx',
+        'src/config/theme.tsx',
+        'src/styles/stylesheets.scss',
+        'src/styles/variables.scss',
+        'src/typings/jsx.d.tsx',
+        'src/typings/vue-shims.d.tsx',
+        { name: 'package.json', dist: 'package.json', fn: toLowercase },
+        { name: 'webpack.dev.js', dist: 'webpack.dev.js', fn: toLowercase },
+        { name: 'src/vtsx.d.tsx', dist: `src/${nameLowercase}.d.tsx`, fn: str => str },
+        { name: 'src/vtsx.tsx', dist: `src/${nameLowercase}.tsx`, fn: toLowercase },
+        { name: 'src/config/routes.tsx', dist: 'src/config/routes.tsx', fn: toUppercase },
+        { name: 'src/views/Vtsx.tsx', dist: `src/views/${nameUppercase}.tsx`, fn: toUppercase }
+]).forEach((element: any) => {
+        if (typeof (element) === 'string') {
+                element = { name: element, dist: element, fn: str => str }
+        }
+
+        let buffers = fs.readFileSync(path.join(tplPath, element.name) + '.tpl').toString()
+        fs.writeFileSync(path.join(distPath, element.dist), element.fn(buffers))
+})

@@ -22,7 +22,7 @@
                 "vue": "^2.5.16",
                 "vue-router": "^3.0.1",
                 "axios": "^0.18.0",
-                "init-browsers": "^1.2.0"
+                "init-browsers": "^1.2.6"
         },
         "devDependencies": {
                 "clear-cli": "^1.0.1",
