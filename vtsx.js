@@ -16,7 +16,7 @@ function main() {
         var shell = path.basename(process.argv[1]);
         console.log(shell + " build a vue-app that support the typescript and jsx grammar");
         console.log("Version: " + version);
-        console.log("Syntsx: " + shell + " name");
+        console.log("Syntsx: " + shell + " name [--less|--sass]");
         process.exit(0);
     }
     if (/^[a-zA-Z][a-zA-Z0-9]{0,}$/.test(process.argv[2]) === false) {
@@ -25,6 +25,7 @@ function main() {
     }
     var nameLowercase = process.argv[2];
     var nameUppercase = nameLowercase.replace(/^[a-zA-Z]/, function (str) { return str.toUpperCase(); });
+    var optStylesheet = String(process.argv[3] || '--less').toLowerCase();
     var distPath = path.resolve('.');
     var toLowercase = function (str) { return str.replace(/vtsx/g, nameLowercase); };
     var toUppercase = function (str) { return str.replace(/vtsx/g, nameUppercase); };
@@ -46,14 +47,22 @@ function main() {
         'src/config/index.tsx',
         'src/config/settings.tsx',
         'src/config/theme.tsx',
-        'src/styles/stylesheets.scss',
-        'src/styles/variables.scss',
+        optStylesheet === '--sass'
+            ? 'src/styles/stylesheets.scss'
+            : 'src/styles/stylesheets.less',
+        optStylesheet === '--sass'
+            ? 'src/styles/variables.scss'
+            : 'src/styles/variables.less',
         'src/typings/jsx.d.tsx',
         'src/typings/vue-shims.d.tsx',
-        { name: 'package.json', dist: 'package.json', fn: toLowercase },
+        optStylesheet === '--sass'
+            ? { name: 'package-sass.json', dist: 'package.json', fn: toLowercase }
+            : { name: 'package-less.json', dist: 'package.json', fn: toLowercase },
         { name: 'webpack.dev.js', dist: 'webpack.dev.js', fn: toLowercase },
         { name: 'src/vtsx.d.tsx', dist: "src/" + nameLowercase + ".d.tsx", fn: function (str) { return str; } },
-        { name: 'src/vtsx.tsx', dist: "src/" + nameLowercase + ".tsx", fn: toLowercase },
+        optStylesheet === '--sass'
+            ? { name: 'src/vtsx-sass.tsx', dist: "src/" + nameLowercase + ".tsx", fn: toLowercase }
+            : { name: 'src/vtsx-less.tsx', dist: "src/" + nameLowercase + ".tsx", fn: toLowercase },
         { name: 'src/config/routes.tsx', dist: 'src/config/routes.tsx', fn: toUppercase },
         { name: 'src/views/Vtsx.tsx', dist: "src/views/" + nameUppercase + ".tsx", fn: toUppercase }
     ]).forEach(function (element) {
