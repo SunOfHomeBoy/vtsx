@@ -9,7 +9,6 @@
                 --less 支持less樣式編譯器模式即默認選項
                 --sass 支持sass樣式編譯器模式
         
-        使用步驟:
         第一步: 全局安裝vtsx命令
                 npm install -g vtsx
 
