@@ -9,7 +9,7 @@ exports.__esModule = true;
 // @authors hjboss <hongjiangproject@gmail.com> 2018-04 $$
 var fs = require("fs");
 var path = require("path");
-function vtsx() {
+function main() {
     var version = '1.0.0';
     var tplPath = path.join(__dirname, 'templates');
     if (process.argv.length <= 2) {
@@ -64,4 +64,4 @@ function vtsx() {
         fs.writeFileSync(path.join(distPath, element.dist), element.fn(buffers));
     });
 }
-exports["default"] = vtsx;
+exports.main = main;

@@ -1,6 +1,6 @@
 {
         "name": "vtsx",
-        "version": "0.0.2",
+        "version": "0.0.6",
         "description": "支持Typescript和JSX的Vue腳手架",
         "keywords": [
                 "typescript",
@@ -15,7 +15,9 @@
                 "type": "git",
                 "url": "git+https://github.com/hjboss/vtsx.git"
         },
-        "main": "./vtsx.js",
+        "bin": {
+                "vtsx": "./bin/vtsx.js"
+        },
         "scripts": {
                 "build": "./node_modules/.bin/tsc ./vtsx.ts"
         },

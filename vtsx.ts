@@ -8,7 +8,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-export default function vtsx() {
+export function main() {
         const version: string = '1.0.0'
         const tplPath: string = path.join(__dirname, 'templates')
 
