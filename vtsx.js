@@ -10,7 +10,7 @@ exports.__esModule = true;
 var fs = require("fs");
 var path = require("path");
 function main() {
-    var version = '1.0.0';
+    var version = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json')).toString()).version;
     var tplPath = path.join(__dirname, 'templates');
     if (process.argv.length <= 2) {
         var shell = path.basename(process.argv[1]);

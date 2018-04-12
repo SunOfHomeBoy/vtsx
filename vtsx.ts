@@ -9,7 +9,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 export function main() {
-        const version: string = '1.0.0'
+        const version: string = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json')).toString()).version
         const tplPath: string = path.join(__dirname, 'templates')
 
         if (process.argv.length <= 2) {
