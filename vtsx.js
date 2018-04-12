@@ -69,7 +69,7 @@ function main() {
         if (typeof (element) === 'string') {
             element = { name: element, dist: element, fn: function (str) { return str; } };
         }
-        var buffers = fs.readFileSync(path.join(tplPath, element.name) + '.tpl').toString();
+        var buffers = fs.readFileSync(path.join(tplPath, element.name)).toString();
         fs.writeFileSync(path.join(distPath, element.dist), element.fn(buffers));
     });
 }
