@@ -24,6 +24,7 @@
         "devDependencies": {
                 "@types/node": "^6.0.105",
                 "typescript": "^2.8.1",
-                "cross-env": "^5.1.4"
+                "vue": "^2.5.16",
+                "vue-property-decorator": "^6.0.0"
         }
 }

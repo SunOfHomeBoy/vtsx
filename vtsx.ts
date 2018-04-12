@@ -75,7 +75,7 @@ export function main() {
                         element = { name: element, dist: element, fn: str => str }
                 }
 
-                let buffers = fs.readFileSync(path.join(tplPath, element.name) + '.tpl').toString()
+                let buffers = fs.readFileSync(path.join(tplPath, element.name)).toString()
                 fs.writeFileSync(path.join(distPath, element.dist), element.fn(buffers))
         })
 }
