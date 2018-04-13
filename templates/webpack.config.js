@@ -39,7 +39,7 @@ module.exports = function (webpackConfig) {
                 }
         }
         for (var field in webpackConfig.entry) {
-                webpackConfig.entry[field] = path.resolve(path.join((webpackConfig.rootDir || 'src/'), webpackConfig.entry[field]))
+                webpackConfig.entry[field] = path.resolve(path.join((webpackConfig.rootDir || 'src'), webpackConfig.entry[field]))
         }
 
         var resolveModules = [path.join(outDir, 'node_modules')]
@@ -182,7 +182,7 @@ module.exports = function (webpackConfig) {
                 },
                 plugins: removeEmpty([
                         new HtmlWebpackPlugin({
-                                template: 'src/' + (webpackConfig.html || 'index.html'),
+                                template: (webpackConfig.rootDir || 'src') + '/' + (webpackConfig.html || 'index.html'),
                                 filename: webpackConfig.html || 'index.html',
                                 minify: {
                                         html5: true,
@@ -204,7 +204,7 @@ module.exports = function (webpackConfig) {
                         new ExtractTextPlugin({ filename: cssFileName, disable: false, allChunks: true }),
                         new CaseSensitivePathsPlugin(),
                         new CopyWebpackPlugin([{
-                                from: 'src/assets',
+                                from: (webpackConfig.rootDir || 'src') + '/assets',
                                 to: distDir
                         }]),
                         ifProduction(new Visualizer()),
