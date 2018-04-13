@@ -39,7 +39,7 @@ module.exports = function (webpackConfig) {
                 }
         }
         for (var field in webpackConfig.entry) {
-                webpackConfig.entry[field] = path.resolve('src/' + webpackConfig.entry[field])
+                webpackConfig.entry[field] = path.resolve(path.join((webpackConfig.rootDir || 'src/'), webpackConfig.entry[field]))
         }
 
         var resolveModules = [path.join(outDir, 'node_modules')]
