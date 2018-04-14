@@ -1,6 +1,6 @@
 {
         "name": "vtsx",
-        "version": "1.1.2",
+        "version": "1.1.3",
         "description": "支持Typescript和JSX的Vue腳手架",
         "keywords": [
                 "typescript",
