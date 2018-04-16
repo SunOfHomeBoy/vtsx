@@ -51,8 +51,8 @@ function main() {
             ? 'src/styles/stylesheets.scss'
             : 'src/styles/stylesheets.less',
         optStylesheet === '--sass'
-            ? 'src/styles/variables.scss'
-            : 'src/styles/variables.less',
+            ? 'src/styles/variable.scss'
+            : 'src/styles/variable.less',
         'src/typings/jsx.d.tsx',
         'src/typings/vue-shims.d.tsx',
         optStylesheet === '--sass'
