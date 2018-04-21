@@ -4,6 +4,7 @@ module.exports = {
                 'postcss-import': {},
                 'postcss-cssnext': {
                         browsers: [
+                                'defaults',
                                 '> 0.5%',
                                 'last 2 versions',
                                 'Firefox ESR',
