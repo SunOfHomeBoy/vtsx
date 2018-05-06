@@ -1,2 +1,1 @@
-/// <reference path="./typings/vue-shims.d.tsx" />
-/// <reference path="./typings/jsx.d.tsx" />
+/// <reference path="../../node_modules/vtsx.d/vtsx.d.tsx" />

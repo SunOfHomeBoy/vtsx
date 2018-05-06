@@ -1,6 +1,6 @@
 {
         "name": "vtsx",
-        "version": "1.1.9",
+        "version": "1.2.0",
         "description": "支持Typescript和JSX的Vue腳手架",
         "keywords": [
                 "typescript",
@@ -25,6 +25,7 @@
                 "@types/node": "^6.0.105",
                 "typescript": "^2.8.1",
                 "vue": "^2.5.16",
-                "vue-property-decorator": "^6.0.0"
+                "vue-property-decorator": "^6.0.0",
+                "vtsx.d": "^0.0.1"
         }
 }

@@ -1,5 +1,5 @@
 {
-        "name": "vtsx",
+        "name": "NAME",
         "version": "1.0.0",
         "description": "",
         "keywords": [],
@@ -22,7 +22,8 @@
                 "vue": "^2.5.16",
                 "vue-router": "^3.0.1",
                 "axios": "^0.18.0",
-                "init-browsers": "^1.2.12"
+                "init-browsers": "^1.2.12",
+                "vtsx.d": "^1.0.0"
         },
         "devDependencies": {
                 "clear-cli": "^1.0.1",

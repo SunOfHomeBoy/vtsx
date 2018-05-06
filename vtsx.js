@@ -53,13 +53,13 @@ function main() {
         optStylesheet === '--sass'
             ? 'src/styles/variable.scss'
             : 'src/styles/variable.less',
-        'src/typings/jsx.d.tsx',
-        'src/typings/vue-shims.d.tsx',
+        //'src/typings/jsx.d.tsx',
+        //'src/typings/vue-shims.d.tsx',
         optStylesheet === '--sass'
-            ? { name: 'package-sass.json', dist: 'package.json', fn: toLowercase }
-            : { name: 'package-less.json', dist: 'package.json', fn: toLowercase },
+            ? { name: 'package-sass.json', dist: 'package.json', fn: function (str) { return str.replace(/NAME/g, nameLowercase); } }
+            : { name: 'package-less.json', dist: 'package.json', fn: function (str) { return str.replace(/NAME/g, nameLowercase); } },
         { name: 'webpack.dev.js', dist: 'webpack.dev.js', fn: toLowercase },
-        { name: 'src/vtsx.d.tsx', dist: "src/" + nameLowercase + ".d.tsx", fn: function (str) { return str; } },
+        { name: 'src/vtsx.d.tsx', dist: "src/" + nameLowercase + ".d.tsx", fn: function (str) { return str.replace('../../', '../'); } },
         optStylesheet === '--sass'
             ? { name: 'src/vtsx-sass.tsx', dist: "src/" + nameLowercase + ".tsx", fn: toLowercase }
             : { name: 'src/vtsx-less.tsx', dist: "src/" + nameLowercase + ".tsx", fn: toLowercase },
